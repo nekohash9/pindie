@@ -1,3 +1,6 @@
+import "@/app/page.module.css";
+import "./Footer.module.css"
+
 export default function Footer() {
   return (
     <>

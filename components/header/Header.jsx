@@ -1,3 +1,6 @@
+import "@/app/page.module.css";
+import "./Header.module.css"
+
 export default function Header() {
   return (
     <>
