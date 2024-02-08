@@ -1,6 +1,7 @@
 // import { Inter } from "next/font/google";
 import "./globals.css";
-
+import Footer from "@/components/footer/Footer";
+import Header from "@/components/header/Header";
 // const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
@@ -11,76 +12,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="ru">
-      <header class="header">
-        <a href="./index.html" class="logo">
-          <img
-            class="logo__image"
-            src="./images/logo.svg"
-            alt="Логотип Pindie"
-          />
-        </a>
-        <nav class="menu">
-          <ul class="menu__list">
-            <li class="menu__item">
-              <a href="" class="menu__link">
-                Новинки
-              </a>
-            </li>
-            <li class="menu__item">
-              <a href="" class="menu__link">
-                Популярные
-              </a>
-            </li>
-            <li class="menu__item">
-              <a href="" class="menu__link">
-                Шутеры
-              </a>
-            </li>
-            <li class="menu__item">
-              <a href="" class="menu__link">
-                Ранеры
-              </a>
-            </li>
-            <li class="menu__item">
-              <a href="" class="menu__link">
-                Пиксельные
-              </a>
-            </li>
-            <li class="menu__item">
-              <a href="" class="menu__link">
-                TDS
-              </a>
-            </li>
-          </ul>
-          <div class="auth">
-            <button class="auth__button">Войти</button>
-          </div>
-        </nav>
-      </header>
-      <footer class="footer">
-        <a href="./index.html" class="footer__logo">
-          <span class="footer__logo-name">pindie</span>
-          <span class="footer__logo-copy">, XXI век</span>
-        </a>
-        <ul class="social-list">
-          <li class="social-list__item">
-            <a href="" class="button social-list__link">
-              YT
-            </a>
-          </li>
-          <li class="social-list__item">
-            <a href="" class="button social-list__link">
-              ВК
-            </a>
-          </li>
-          <li class="social-list__item">
-            <a href="" class="button social-list__link">
-              TG
-            </a>
-          </li>
-        </ul>
-      </footer>
       <body>{children}</body>
+      <Header/>
+      <Footer/>
     </html>
   );
 }
