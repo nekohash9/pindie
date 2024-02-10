@@ -1,4 +1,4 @@
-import Styles from './CardList.module.css';
+import Styles from './CardsList.module.css';
 
 export const NewCardsFragment = () => {
   return (
