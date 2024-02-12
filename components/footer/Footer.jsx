@@ -1,4 +1,4 @@
-import Styles from './Footer.module.css';
+import Styles from "./Footer.module.css";
 
 export const Footer = () => {
   return (
@@ -7,11 +7,11 @@ export const Footer = () => {
         <span className={Styles.footer__logoname}>pindie</span>
         <span className={Styles.footer__logocopy}>, XXI век</span>
       </a>
-      <ul className={Styles['social-list']}>
+      <ul className={Styles["social-list"]}>
         <li className={Styles.sociallist__item}>
           <a
             href=""
-            className={`${Styles.button} ${Styles['social-list__link']}`}
+            className={`${Styles.button} ${Styles["social-list__link"]}`}
           >
             YT
           </a>
@@ -19,7 +19,7 @@ export const Footer = () => {
         <li className={Styles.sociallist__item}>
           <a
             href=""
-            className={`${Styles.button} ${Styles['social-list__link']}`}
+            className={`${Styles.button} ${Styles["social-list__link"]}`}
           >
             ВК
           </a>
@@ -27,7 +27,7 @@ export const Footer = () => {
         <li className={Styles.sociallist__item}>
           <a
             href=""
-            className={`${Styles.button} ${Styles['social-list__link']}`}
+            className={`${Styles.button} ${Styles["social-list__link"]}`}
           >
             TG
           </a>
