@@ -5,6 +5,20 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: "Anonymous Pro";
+  src: url(../public/fonts/anonymouspro-bold.woff);
+  font-weight: bold;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Rubic One";
+  src: url(../public/fonts/rubic-one.woff);
+  font-weight: normal;
+  font-display: swap;
+}
+
 *,
 *::before,
 *::after {
