@@ -3,7 +3,6 @@ import { Card } from "../Card/Card";
 import Styles from "./CardsList.module.css";
 
 export const CardsList = (props) => {
-
   return (
     <section className={Styles["list-section"]}>
       <h2 className={Styles["list-section__title"]} id={props.id}>
