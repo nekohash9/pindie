@@ -6,7 +6,7 @@ export const Header = () => {
       <a href="./index.html" className={Styles.logo}>
         <img
           className={Styles.logo__image}
-          src="./images/logo.svg"
+          src="/images/logo.svg"
           alt="Логотип Pindie"
         />
       </a>
