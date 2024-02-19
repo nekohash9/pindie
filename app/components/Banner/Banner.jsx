@@ -14,15 +14,12 @@ export const Banner = () => {
             аккаунт пользователя — получаете возможность голосовать за игры.
           </p>
         </div>
-        <a
-          href="#popular"
-          className={`${Styles.button} ${Styles.banner__link}`}
-        >
+        <a href="#popular" className={`button {Styles.banner__link}`}>
           Смотреть игры
         </a>
       </div>
       <img
-        src="./images/banner-illustration.jpg"
+        src="/images/banner-illustration.jpg"
         alt="Рука, утопленная в желтом фоне"
         className={Styles.banner__image}
       />
