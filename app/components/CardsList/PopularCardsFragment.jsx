@@ -1,5 +1,3 @@
-import Styles from "./CardsList.module.css";
-
 export const PopularCardsFragment = () => {
   return (
     <>
