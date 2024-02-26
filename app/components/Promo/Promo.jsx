@@ -18,8 +18,7 @@ export const Promo = () => {
       }, 5000);
     }
     return () => {
-      clearTimeout;
-      timeout;
+      clearTimeout(timeout);
     };
   }, [codeIsVisible]);
 
