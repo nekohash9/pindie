@@ -58,6 +58,11 @@
   background-color: #ffff00;
 }
 
+.menu__link_active {
+  background-color: #ffff00;
+  pointer-events: none;
+}
+
 .auth {
   display: flex;
 }
@@ -128,5 +133,4 @@
     width: 100%;
     padding: 18px 20px 10px;
   }
-  
 }
