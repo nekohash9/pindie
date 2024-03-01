@@ -21,7 +21,6 @@ export const Header = () => {
   };
 
   const pathname = usePathname();
-
   return (
     <header className={Styles.header}>
       <Link href="/" className={Styles.logo}>
