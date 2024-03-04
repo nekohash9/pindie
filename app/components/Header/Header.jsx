@@ -21,16 +21,26 @@ export const Header = () => {
   };
 
   const pathname = usePathname();
-  
+
   return (
     <header className={Styles.header}>
-      <Link href="/" className={Styles.logo}>
-        <img
-          className={Styles.logo__image}
-          src="/images/logo.svg"
-          alt="Логотип Pindie"
-        />
-      </Link>
+      {pathname === "/" ? (
+        <span className={Styles["logo"]}>
+          <img
+            className={Styles["logo__image"]}
+            src="/images/logo.svg"
+            alt="Логотип Pindie"
+          />
+        </span>
+      ) : (
+        <Link href="/" className={Styles["logo"]}>
+          <img
+            className={Styles["logo__image"]}
+            src="/images/logo.svg"
+            alt="Логотип Pindie"
+          />
+        </Link>
+      )}
       <nav className={Styles.menu}>
         <ul className={Styles.menu__list}>
           <li className={Styles.menu__item}>
