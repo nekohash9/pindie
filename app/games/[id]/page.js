@@ -3,7 +3,7 @@ import { getGameById } from "@/app/data/data-utils";
 import Styles from "./Game.module.css";
 import { GameNotFound } from "@/app/components/GameNotFound/GameNotFound";
 import { useEffect, useState } from "react";
-// import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 
 const GamePage = (props) => {
   const [game, setGame] = useState();
@@ -13,7 +13,11 @@ const GamePage = (props) => {
     setGame(fetchedGame);
   }, [props.params.id]);
 
-  // const router = useRouter();
+  const router = useRouter();
+
+  const handleClick = () => {
+    router.push("/login");
+  };
 
   return (
     <main className="main">
@@ -43,7 +47,7 @@ const GamePage = (props) => {
                 </span>
               </p>
               <button
-                onClick={() => {}}
+                onClick={handleClick}
                 className={`button ${Styles["about__vote-button"]}`}
               >
                 Голосовать
