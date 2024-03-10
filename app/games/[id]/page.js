@@ -6,6 +6,7 @@ import {
   getNormalizedGameDataById,
   isResponseOk,
   removeJWT,
+  vote,
 } from "@/app/api/api-utils";
 import Styles from "./Game.module.css";
 import { useRouter } from "next/navigation";
