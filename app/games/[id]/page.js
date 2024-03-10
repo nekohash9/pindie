@@ -1,5 +1,6 @@
 "use client";
 import {
+  checkIfUserVoted,
   getJWT,
   getMe,
   getNormalizedGameDataById,
@@ -18,6 +19,7 @@ export default function GamePage(props) {
   const [game, setGame] = useState(false);
   const [isAuthorized, setIsAuthorized] = useState(false);
   const [currentUser, setCurrentUser] = useState(null);
+  const [isVoted, setIsVoted] = useState(false);
 
   useEffect(() => {
     async function fetchData() {
@@ -46,6 +48,35 @@ export default function GamePage(props) {
     }
   }, []);
 
+  useEffect(() => {
+    if (currentUser && game) {
+      setIsVoted(checkIfUserVoted(game, currentUser.id));
+    } else {
+      setIsVoted(false);
+    }
+  }, [currentUser, game]);
+
+  const handleVote = async () => {
+    const jwt = getJWT;
+    let usersIdArray = game.users.length
+      ? game.users.map((user) => user.id)
+      : [];
+    usersIdArray.push(currentUser.id);
+    const response = await vote(
+      `${endpoints.games}/${game.id}`,
+      jwt,
+      usersIdArray
+    );
+    if (isResponseOk(response)) {
+      setIsVoted(true);
+      setGame(() => {
+        return {
+          ...game,
+          users: [...game.users, currentUser],
+        };
+      });
+    }
+  };
   return game ? (
     <main className="main">
       <section className={Styles["game"]}>
@@ -68,13 +99,11 @@ export default function GamePage(props) {
             <span className={Styles["about__accent"]}>{game.users.length}</span>
           </p>
           <button
-            disabled={!isAuthorized}
+            disabled={!isAuthorized || isVoted}
             className={`button ${Styles["about__vote-button"]}`}
-            // onClick={() => {
-            // 	router.push('/auth-page');
-            // }}
+            onClick={handleVote}
           >
-            Голосовать
+            {isVoted ? "Голос учтён" : "Голосовать"}
           </button>
         </div>
       </section>
