@@ -11,8 +11,8 @@ export const AuthForm = (props) => {
   const [message, setMessage] = useState({ status: null, text: null });
   useEffect(() => {
     authorize(endpoints.auth, {
-      identifier: "aski@example.com",
-      password: "ilovehtml",
+      identifier: "venus_0e61344d@example.com",
+      password: "84c9a79535df4e3ad4bc",
     }).then((res) => console.log(res));
   }, []);
   const handleInput = (e) => {

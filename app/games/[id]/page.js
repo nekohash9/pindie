@@ -9,13 +9,11 @@ import {
   vote,
 } from "@/app/api/api-utils";
 import Styles from "./Game.module.css";
-import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { endpoints } from "@/app/api/config";
 import { Preloader } from "@/app/Components/Preloader/Preloader";
 
 export default function GamePage(props) {
-  const router = useRouter();
   const [preloaderVisible, setPreloaderVisible] = useState(true);
   const [game, setGame] = useState(false);
   const [isAuthorized, setIsAuthorized] = useState(false);
@@ -58,7 +56,7 @@ export default function GamePage(props) {
   }, [currentUser, game]);
 
   const handleVote = async () => {
-    const jwt = getJWT;
+    const jwt = getJWT();
     let usersIdArray = game.users.length
       ? game.users.map((user) => user.id)
       : [];
