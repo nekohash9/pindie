@@ -1,12 +1,19 @@
-import { getNormalizedGamesDataByCategory } from '../api/api-utils';
-import { CardsList } from "../components/CardsList/CardsList";
+"use client";
+import { useGetDataByCategory } from "../api/api-hooks";
+import { CardsList } from "../Components/CardsList/CardsList";
 import { endpoints } from "../api/config";
+import { Preloader } from "../Components/Preloader/Preloader";
 
-export default async function PixelGames() {
-  const pixelGames = await getNormalizedGamesDataByCategory(endpoints.games, "pixel");
+export default function pixelGames() {
+  const pixelGames = useGetDataByCategory(endpoints.games, "pixel");
+
   return (
-    <main className="main-inner">
-      <CardsList id="pixel" title="Пиксельные" data={pixelGames} />
+    <main>
+      {pixelGames ? (
+        <CardsList id="pixel" title="Пиксельные игры" data={pixelGames} />
+      ) : (
+        <Preloader />
+      )}
     </main>
   );
 }
