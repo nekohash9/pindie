@@ -9,11 +9,10 @@ import Styles from "./Game.module.css";
 import { useEffect, useState } from "react";
 import { endpoints } from "@/app/api/config";
 import { Preloader } from "@/app/Components/Preloader/Preloader";
-import { useContext } from "react";
-import { AuthContext } from "@/app/context/app-context";
+import { useStore } from "@/app/store/app-store";
 
 export default function GamePage(props) {
-  const authContext = useContext(AuthContext);
+  const authContext = useStore();
   const [preloaderVisible, setPreloaderVisible] = useState(true);
   const [game, setGame] = useState(false);
   const [isVoted, setIsVoted] = useState(false);
@@ -38,11 +37,11 @@ export default function GamePage(props) {
   }, [authContext.user, game]);
 
   const handleVote = async () => {
-    const jwt = authContext.token; // Данные о токене получаем из контекста
+    const jwt = authContext.token;
     let usersIdArray = game.users.length
       ? game.users.map((user) => user.id)
       : [];
-    usersIdArray.push(authContext.user.id); // Данные о пользователе получаем из контекста
+    usersIdArray.push(authContext.user.id);
     const response = await vote(
       `${endpoints.games}/${game.id}`,
       jwt,
@@ -52,7 +51,6 @@ export default function GamePage(props) {
       setGame(() => {
         return {
           ...game,
-          // Данные о пользователе получаем из контекста
           users: [...game.users, authContext.user],
           users_permissions_users: [
             ...game.users_permissions_users,
