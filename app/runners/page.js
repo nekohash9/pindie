@@ -1,5 +1,5 @@
 "use client";
-import { useGetDataByCategory } from "../api/api-hooks";
+import { useGetDataByCategory } from "../api/api-hooks.js";
 import { CardsListSection } from "../Components/CardsListSection/CardsListSection";
 import { endpoints } from "../api/config";
 import { Preloader } from "../Components/Preloader/Preloader";

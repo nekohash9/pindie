@@ -2,13 +2,12 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { useContext } from "react";
-import { AuthContext } from "@/app/context/app-context";
 import { usePathname } from "next/navigation";
 import Styles from "./Header.module.css";
 import { Overlay } from "../Overlay/Overlay";
 import { Popup } from "../Popup/Popup";
 import { AuthForm } from "../AuthForm/AuthForm";
+import { useStore } from "@/app/store/app-store";
 export const Header = () => {
   const [popupIsOpened, setPopupIsOpened] = useState(false);
 
@@ -19,7 +18,7 @@ export const Header = () => {
     setPopupIsOpened(false);
   };
   const pathname = usePathname();
-  const authContext = useContext(AuthContext);
+  const authContext = useStore();
   const handleLogout = () => {
     authContext.logout();
   };
