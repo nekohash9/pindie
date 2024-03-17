@@ -1,20 +1,20 @@
 import Styles from "./Card.module.css";
+import { NewCardsFragment } from "../CardsListSection/NewCardsFragment";
 
 export const Card = (props) => {
   return (
     <article className={Styles.card}>
-      <img src={props.image} alt="" className={Styles.card__image} />
-      <div className={Styles["card__content-block"]}>
-        <h3 className={Styles.card__title}>{props.title}</h3>
-        <p className={Styles.card__description}>{props.description}</p>
-        <div className={Styles["card__info-container"]}>
-          <p className={Styles.card__author}>
-            Автор:{" "}
-            <span className={Styles.card__accent}>{props.developer}</span>
+      <img src={props.image} className={Styles["image"]} />
+      <div className={Styles["content-block"]}>
+        <h3 className={Styles["title"]}>{props.title}</h3>
+        <p className={Styles["description"]}>{props.description}</p>
+        <div className={Styles["info-container"]}>
+          <p className={Styles["author"]}>
+            Автор: <span className={Styles["accent"]}>{props.developer}</span>
           </p>
-          <p className={Styles.card__votes}>
+          <p className={Styles["votes"]}>
             Голосов на сайте:{" "}
-            <span className={Styles.card__accent}>{props.users.length}</span>
+            <span className={Styles["accent"]}>{props.users.length}</span>
           </p>
         </div>
       </div>
