@@ -1,23 +1,26 @@
-import Image from "next/image";
-import styles from "./page.module.css";
-
-import { getGamesByCategory } from "./data/data-utils.js";
-
-import { Banner } from "./components/Banner/Banner";
-import { CardsList } from "./components/CardsList/CardsList";
-import { PopularCardsFragment } from "./components/CardsList/PopularCardsFragment";
-import { NewCardsFragment } from "./components/CardsList/NewCardsFragment";
-import { Promo } from "./components/Promo/Promo";
+import { getGamesByCategory } from "./data/data-utils";
+import { Banner } from "./Components/Banner/Banner";
+import { CardsListSection } from "./Components/CardsListSection/CardsListSection";
+import { Promo } from "./Components/Promo/Promo";
 
 export default function Home() {
   const popularGames = getGamesByCategory("popular");
   const newGames = getGamesByCategory("new");
-
   return (
-    <main className="main">
+    <main>
       <Banner />
-      <CardsList id="popular" title="Популярное" data={popularGames} />
-      <CardsList id="new" title="Новинки" data={newGames} />
+      <CardsListSection
+        type="slider"
+        id="popular"
+        title="Популярные"
+        data={popularGames}
+      />
+      <CardsListSection
+        type="slider"
+        id="new"
+        title="Новинки"
+        data={newGames}
+      />
       <Promo />
     </main>
   );
