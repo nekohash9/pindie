@@ -8,7 +8,6 @@ import { endpoints } from "@/app/api/config";
 import { useStore } from "@/app/store/app-store";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 
 export const AuthForm = (props) => {
   const [authData, setAuthData] = useState({ identifier: "", password: "" });
@@ -21,17 +20,13 @@ export const AuthForm = (props) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // console.log(authData);
+    console.log(authData);
     const userData = await authorize(endpoints.auth, authData);
     if (isResponseOk(userData)) {
-      await getMe(endpoints.me, userData.jwt);
       authContext.login(userData.user, userData.jwt);
       setMessage({ status: "success", text: "Вы авторизовались!" });
     } else {
       setMessage({ status: "error", text: "Неверные почта или пароль" });
-    }
-    if (isResponseOk(authData)) {
-      setAuthData(authData.user);
     }
   };
 

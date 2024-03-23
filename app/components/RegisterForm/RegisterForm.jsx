@@ -1,19 +1,19 @@
-'use client';
+"use client";
 
-import Styles from './RegisterForm.module.css';
-import { useState } from 'react';
-import { register } from '@/app/api/api-utils';
-import { endpoints } from '@/app/api/config';
-import { useStore } from '@/app/store/app-store';
+import Styles from "./RegisterForm.module.css";
+import { useState } from "react";
+import { register } from "@/app/api/api-utils";
+import { endpoints } from "@/app/api/config";
+import { useRouter } from "next/navigation";
 
 export const RegisterForm = () => {
   const [registerData, setRegisterData] = useState({
-    username: '',
-    email: '',
-    password: '',
+    username: "",
+    email: "",
+    password: "",
   });
   const [message, setMessage] = useState({ status: null, text: null });
-  const authContext = useStore();
+  const router = useRouter();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -22,53 +22,49 @@ export const RegisterForm = () => {
 
   const handleClickRegister = async (e) => {
     e.preventDefault();
-    // console.log(registerData);
+    console.log(registerData);
     const newUserData = await register(endpoints.register, registerData);
     if (newUserData && !newUserData.error) {
-      setMessage({ status: 'success', text: 'Вы зарегистрировались!' });
+      setMessage({ status: "success", text: "Вы зарегистрировались!" });
     } else {
-      setMessage({ status: 'error', text: 'Ошибка при регистрации!' });
+      setMessage({ status: "error", text: "Ошибка при регистрации!" });
     }
   };
 
-  useEffect(() => {
-    let timer;
-    if (authContext.user) {
-      timer = setTimeout(() => {
-        props.close();
-      }, 1000);
-    }
-    return () => clearTimeout(timer);
-  }, [authContext.user]);
+  const clickRegBtn = () => {
+    setTimeout(() => {
+      router.push("/");
+    }, 2000);
+  };
 
   return (
-    <form onSubmit={handleClickRegister} className={Styles['form']}>
-      <h2 className={Styles['form__title']}>Регистрация</h2>
-      <div className={Styles['form__fields']}>
-        <label className={Styles['form__field']}>
-          <span className={Styles['form__field-title']}>UserName</span>
+    <form onSubmit={handleClickRegister} className={Styles["form"]}>
+      <h2 className={Styles["form__title"]}>Регистрация</h2>
+      <div className={Styles["form__fields"]}>
+        <label className={Styles["form__field"]}>
+          <span className={Styles["form__field-title"]}>UserName</span>
           <input
-            className={Styles['form__field-input']}
+            className={Styles["form__field-input"]}
             name="username"
             type="username"
             placeholder="helloWorld"
             onChange={handleChange}
           />
         </label>
-        <label className={Styles['form__field']}>
-          <span className={Styles['form__field-title']}>Email</span>
+        <label className={Styles["form__field"]}>
+          <span className={Styles["form__field-title"]}>Email</span>
           <input
-            className={Styles['form__field-input']}
+            className={Styles["form__field-input"]}
             name="email"
             type="email"
             placeholder="hello@world.com"
             onChange={handleChange}
           />
         </label>
-        <label className={Styles['form__field']}>
-          <span className={Styles['form__field-title']}>Пароль</span>
+        <label className={Styles["form__field"]}>
+          <span className={Styles["form__field-title"]}>Пароль</span>
           <input
-            className={Styles['form__field-input']}
+            className={Styles["form__field-input"]}
             name="password"
             type="password"
             placeholder="***********"
@@ -77,13 +73,17 @@ export const RegisterForm = () => {
         </label>
       </div>
       {message.status && (
-        <p className={Styles['form__message']}>{message.text}</p>
+        <p className={Styles["form__message"]}>{message.text}</p>
       )}
-      <div className={Styles['form__actions']}>
-        <button className={Styles['form__reset']} type="reset">
+      <div className={Styles["form__actions"]}>
+        <button className={Styles["form__reset"]} type="reset">
           Очистить
         </button>
-        <button className={Styles['form__submit']} type="submit">
+        <button
+          className={Styles["form__submit"]}
+          type="submit"
+          onClick={clickRegBtn}
+        >
           Зарегистрироваться
         </button>
       </div>
