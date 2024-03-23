@@ -63,6 +63,11 @@
   pointer-events: none;
 }
 
+.menu__link_disable {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
 .auth {
   display: flex;
 }

@@ -10,13 +10,14 @@
   grid-template-columns: 2fr 1fr;
 }
 
-.title {
+.promo__title {
   font-size: 42px;
   margin-bottom: 26px;
   line-height: 1;
   width: fit-content;
 }
-.description {
+
+.promo__description {
   line-height: 1.5;
   font-size: 26px;
   font-weight: bold;
@@ -26,13 +27,11 @@
   margin-left: 108px;
 }
 
-.image {
+.promo__image {
   align-self: end;
   justify-self: end;
 }
-.code {
-  color: yellow;
-}
+
 .promo__button {
   color: white;
   border-color: white;
@@ -52,33 +51,51 @@
   background-color: transparent;
   cursor: default;
 }
+
 @media (width <= 1440px) {
-  .description {
+  .promo {
+    padding: 40px 120px;
+  }
+
+  .promo__title {
+    font-size: 30px;
+  }
+
+  .promo__description {
     font-size: 20px;
     margin-left: 90px;
   }
+
+  .promo__button {
+    margin-left: 90px;
+  }
 }
+
 @media (width <= 1024px) {
   .promo {
     padding: 80px 40px;
   }
 }
+
 @media (width <= 768px) {
-  .description {
+  .promo__description {
+    margin-left: 0;
+  }
+
+  .promo__button {
     margin-left: 0;
   }
 }
+
 @media (width <= 650px) {
   .promo {
     grid-template-columns: 1fr;
     gap: 80px;
     padding: 80px 14px;
   }
-  .image {
-    max-width: 400px;
+
+  .promo__image {
+    max-width: 500px;
     justify-self: start;
-  }
-  .promo__button {
-    margin-left: 32px;
   }
 }

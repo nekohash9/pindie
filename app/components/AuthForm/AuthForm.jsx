@@ -1,39 +1,44 @@
 "use client";
+
 import { useEffect, useState } from "react";
 import Styles from "./AuthForm.module.css";
-import { endpoints } from "@/app/api/config";
-import { authorize } from "@/app/api/api-utils";
 import { isResponseOk } from "@/app/api/api-utils";
+import { authorize, getMe } from "@/app/api/api-utils";
+import { endpoints } from "@/app/api/config";
 import { useStore } from "@/app/store/app-store";
 
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+
 export const AuthForm = (props) => {
-  const authContext = useStore();
   const [authData, setAuthData] = useState({ identifier: "", password: "" });
   const [message, setMessage] = useState({ status: null, text: null });
-  useEffect(() => {
-    authorize(endpoints.auth, {
-      identifier: "venus_0e61344d@example.com",
-      password: "84c9a79535df4e3ad4bc",
-    }).then((res) => console.log(res));
-  }, []);
+  const authContext = useStore();
+
   const handleInput = (e) => {
     setAuthData({ ...authData, [e.target.name]: e.target.value });
   };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+    // console.log(authData);
     const userData = await authorize(endpoints.auth, authData);
     if (isResponseOk(userData)) {
+      await getMe(endpoints.me, userData.jwt);
       authContext.login(userData.user, userData.jwt);
       setMessage({ status: "success", text: "Вы авторизовались!" });
     } else {
       setMessage({ status: "error", text: "Неверные почта или пароль" });
     }
+    if (isResponseOk(authData)) {
+      setAuthData(authData.user);
+    }
   };
+
   useEffect(() => {
     let timer;
     if (authContext.user) {
       timer = setTimeout(() => {
-        setMessage({ status: null, text: null });
         props.close();
       }, 1000);
     }
@@ -41,7 +46,7 @@ export const AuthForm = (props) => {
   }, [authContext.user]);
 
   return (
-    <form className={Styles["form"]} onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className={Styles["form"]}>
       <h2 className={Styles["form__title"]}>Авторизация</h2>
       <div className={Styles["form__fields"]}>
         <label className={Styles["form__field"]}>
@@ -76,6 +81,9 @@ export const AuthForm = (props) => {
           Войти
         </button>
       </div>
+      <button className={Styles["form__reg"]} type="submit">
+        <Link href="/register">Зарегистрироваться</Link>
+      </button>
     </form>
   );
 };

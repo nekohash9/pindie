@@ -12,7 +12,7 @@ import Link from "next/link";
 export const CardsSlider = (props) => {
   useEffect(() => {
     const options = {
-      // Параметры слайдера для мониторов компьютера
+      // PC monitors
       loop: false,
       spaceBetween: 10,
       allowTouchMove: true,
@@ -26,7 +26,7 @@ export const CardsSlider = (props) => {
         enabled: true,
         clickable: true,
       },
-      // Параметры слайдера для экранов мобильных гаджетов шириной < 450px
+      // Mobile monitors
       breakpoints: {
         450: {
           loop: true,

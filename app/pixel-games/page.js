@@ -1,21 +1,16 @@
 "use client";
-import { useGetDataByCategory } from "../api/api-hooks.js";
-import { CardsListSection } from "../Components/CardsListSection/CardsListSection";
+
+import { useGetDataByCategory } from "../api/api-hooks";
 import { endpoints } from "../api/config";
-import { Preloader } from "../Components/Preloader/Preloader";
+import { Preloader } from "../components/Preloader/Preloader";
+import { CardListSection } from "../components/CardsListSection/CardListSection";
 
-export default function pixelGames() {
+export default function PixelGames() {
   const pixelGames = useGetDataByCategory(endpoints.games, "pixel");
-
   return (
-    <main>
+    <main className="main-inner">
       {pixelGames ? (
-        <CardsListSection
-          type="slider"
-          id="pixel"
-          title="Пиксельные игры"
-          data={pixelGames}
-        />
+        <CardListSection id="pixel" title="Пиксельные" data={pixelGames} />
       ) : (
         <Preloader />
       )}
