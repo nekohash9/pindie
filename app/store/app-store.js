@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { getJWT, getMe, removeJWT, setJWT } from "../api/api-utils";
+import { removeJWT, setJWT, getJWT, getMe } from "../api/api-utils";
 import { endpoints } from "../api/config";
 
 export const useStore = create((set) => ({

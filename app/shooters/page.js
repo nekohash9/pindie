@@ -1,16 +1,16 @@
 "use client";
-import { useGetDataByCategory } from "../api/api-hooks.js";
-import { CardsList } from "../components/CardsListSection/CardsList";
+
+import { useGetDataByCategory } from "../api/api-hooks";
 import { endpoints } from "../api/config";
-import { Preloader } from "../Components/Preloader/Preloader";
+import { Preloader } from "../components/Preloader/Preloader";
+import { CardListSection } from "../components/CardsListSection/CardListSection";
 
-export default function shooterGames() {
-  const shooterGames = useGetDataByCategory(endpoints.games, "shooter");
-
+export default function Shooters() {
+  const shooter = useGetDataByCategory(endpoints.games, "shooter");
   return (
-    <main>
-      {shooterGames ? (
-        <CardsList id="shooter" title="Шутеры" data={shooterGames} />
+    <main className="main-inner">
+      {shooter ? (
+        <CardListSection id="shooter" title="Шутеры" data={shooter} />
       ) : (
         <Preloader />
       )}

@@ -1,21 +1,16 @@
 "use client";
-import { useGetDataByCategory } from "../api/api-hooks.js";
-import { CardsListSection } from "../Components/CardsListSection/CardsListSection";
+
+import { useGetDataByCategory } from "../api/api-hooks";
 import { endpoints } from "../api/config";
-import { Preloader } from "../Components/Preloader/Preloader";
+import { Preloader } from "../components/Preloader/Preloader";
+import { CardListSection } from "../components/CardsListSection/CardListSection";
 
-export default function popularGames() {
+export default function Popular() {
   const popularGames = useGetDataByCategory(endpoints.games, "popular");
-
   return (
-    <main>
+    <main className="main-inner">
       {popularGames ? (
-        <CardsListSection
-          type="slider"
-          id="popular"
-          title="Популярные"
-          data={popularGames}
-        />
+        <CardListSection id="popular" title="Популярные" data={popularGames} />
       ) : (
         <Preloader />
       )}
