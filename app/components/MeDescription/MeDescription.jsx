@@ -12,8 +12,6 @@ export const MeDescription = () => {
   const authContext = useStore();
   const router = useRouter();
 
-
-
   const handleLogout = () => {
     router.push("/");
     authContext.logout();
@@ -38,7 +36,7 @@ export const MeDescription = () => {
       <h2 className={Styles["about__page_title"]}>Страница аккаунта</h2>
       <div className={Styles["about__page_field"]}>
         <h4 className={Styles["about__page_desc"]}>Имя пользователя:</h4>
-        <p className={Styles["about__page_answer"]}>Имя</p>
+        <p className={Styles["about__page_answer"]}>{useStore.name}</p>
       </div>
       <div className={Styles["about__page_field"]}>
         <h4 className={Styles["about__page_desc"]}>Email: </h4>
