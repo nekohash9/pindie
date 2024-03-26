@@ -3,7 +3,7 @@
 import Styles from "./MeDescription.module.css";
 import { useRouter } from "next/navigation";
 import { useStore } from "@/app/store/app-store";
-import Preloader from "../Preloader/Preloader";
+import { Preloader } from "../Preloader/Preloader";
 
 export const MeDescription = () => {
   const authContext = useStore();
