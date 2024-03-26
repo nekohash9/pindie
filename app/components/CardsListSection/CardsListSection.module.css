@@ -12,7 +12,7 @@
 }
 
 .list-section__title::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 6px;
   left: 25px;
@@ -89,7 +89,7 @@
 }
 
 .card__author .card__accent {
-  font-family: 'Rubic One', sans-serif;
+  font-family: "Rubic One", sans-serif;
 }
 
 .card__votes {
@@ -97,7 +97,7 @@
 }
 
 .card__votes .card__accent {
-  font-family: 'Rubic One', sans-serif;
+  font-family: "Rubic One", sans-serif;
   display: inline-block;
   padding: 4px 17px 25px 4px;
   background-color: black;
